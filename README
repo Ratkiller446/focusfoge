@@ -1,0 +1,189 @@
+# FocusForge
+
+FocusForge is a terminal-based Pomodoro timer and micro task manager designed specifically for users who need to maintain focus and track their productivity. It provides a simple, distraction-free environment with an efficient keyboard-driven interface optimized for power users.
+
+## Features
+
+- **Pomodoro Timer**: 25-minute focused work sessions with automatic tracking
+- **Task Management**: Add, mark as done, unmark, and remove tasks with visual indicators
+- **Streak Tracking**: Monitor consecutive days of productive work
+- **Session History**: View your completed sessions with detailed information
+- **Persistent Storage**: All data is saved in `~/.focusforge/`
+- **Keyboard-Driven Interface**: No mouse required, perfect for terminal users
+- **Minimalist Design**: Clean, distraction-free UI with ASCII-only display
+- **Efficient Commands**: Single-key commands optimized for Finnish QWERTY keyboards
+
+## Installation
+
+### Prerequisites
+
+- GCC or Clang compiler
+- ncurses library
+
+### Building
+
+```bash
+# Build the main application
+gcc -std=c99 -Wall -Wextra -O2 focusforge.c -lncurses -o focusforge
+
+# Run the application
+./focusforge
+```
+
+## Usage
+
+### Keyboard Shortcuts (Optimized for Finnish QWERTY)
+
+#### Session Controls (Left Hand Home Row)
+- `a` - Start focus session
+- `s` - Stop session
+- `d` - Skip current session
+- `f` - Start break session
+
+#### Task Controls (Right Hand Home Row)
+- `j` - Mark current task as done
+- `k` - Unmark current task
+- `l` - Remove current task
+
+#### Navigation
+- `w` - Move up in task list
+- `x` - Move down in task list
+
+#### Other Commands
+- `Enter` - Add new task
+- `Space` - Set current task as focus task
+- `?` - Toggle help display
+- `q` - Quit application
+
+### Command Line Interface
+
+In addition to the single-key shortcuts, FocusForge also supports traditional command-line style inputs:
+
+```bash
+# Add a task
+a Write documentation
+
+# Set focus task
+t Complete project documentation
+
+# Mark task as done
+d 1
+
+# Unmark task
+u 1
+
+# Remove task
+r 1
+
+# Start focus session
+f
+
+# Start break session
+b
+
+# Stop session
+s
+
+# Skip current session
+p
+
+# Quit
+q
+```
+
+## Data Storage
+
+FocusForge stores all data in `~/.focusforge/`:
+
+- `tasks.txt` - List of tasks with completion status
+- `sessions.csv` - Log of completed sessions
+- `meta` - Streak tracking information
+
+## Testing
+
+FocusForge includes a comprehensive test suite to ensure reliability:
+
+```bash
+# Build and run tests
+gcc -std=c99 -Wall -Wextra -O2 focusforge_test.c -o focusforge_test
+./focusforge_test
+```
+
+The test suite covers:
+- Core functionality (timer, task management)
+- Input validation
+- File operations
+- Edge cases and error conditions
+
+## Configuration
+
+FocusForge is designed to work out of the box with sensible defaults:
+
+- Focus sessions: 25 minutes
+- Break sessions: 5 minutes
+- Task limit: 100 tasks
+- Terminal size requirement: 80x24 minimum
+
+## Troubleshooting
+
+### Terminal Issues
+
+If you encounter display issues:
+
+1. Ensure your terminal supports ncurses
+2. Check that your terminal is at least 80x24 characters
+3. Try running `export TERM=xterm-256color` if colors aren't displaying correctly
+
+### File Permission Issues
+
+If you encounter file permission errors:
+
+```bash
+# Check permissions
+ls -la ~/.focusforge/
+
+# Fix permissions if needed
+chmod 755 ~/.focusforge
+chmod 644 ~/.focusforge/*
+```
+
+## Contributing
+
+FocusForge is open-source and welcomes contributions. To contribute:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Submit a pull request
+
+## License
+
+FocusForge is released under the BSD 2-Clause License:
+
+```
+Copyright (c) 2025, Janne Alexander Sebastian Rovio.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```
+
+## Changelog
+
+### Version 0.1.0
+
+- Initial release
+- Pomodoro timer functionality
+- Task management system
+- Streak tracking
+- Session history
+- ASCII-only display
+- Optimized keyboard shortcuts for Finnish QWERTY keyboards
+
+---
+
+**Note**: FocusForge is designed to be a distraction-free tool to help you maintain focus. The minimalist interface and efficient keyboard shortcuts are intentionally simple to keep you in the zone while working.
